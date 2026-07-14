@@ -1,0 +1,26 @@
+const mongoose = require('mongoose');
+
+const NotificationSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  type: {
+    type: String,
+    enum: ['Task Assigned', 'Task Updated', 'Leave Approved', 'Leave Rejected', 'Employee Added', 'System'],
+    required: true
+  },
+  message: {
+    type: String,
+    required: true
+  },
+  read: {
+    type: Boolean,
+    default: false
+  }
+}, {
+  timestamps: true
+});
+
+module.exports = mongoose.model('Notification', NotificationSchema);
