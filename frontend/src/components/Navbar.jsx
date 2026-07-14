@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
 import { FiBell, FiSun, FiMoon, FiUser, FiLogOut, FiMenu, FiChevronDown, FiMail } from 'react-icons/fi';
 import api from '../services/api';
+import { API_BASE_URL } from '../config';
 import { toast } from './Toast';
 
 const Navbar = ({ onToggleSidebar }) => {
@@ -140,7 +141,7 @@ const Navbar = ({ onToggleSidebar }) => {
         <div style={dropdownContainer} ref={profileRef}>
           <button style={profileBtnStyle} onClick={() => setShowProfileDropdown(!showProfileDropdown)}>
             {user?.profilePic ? (
-              <img src={`http://localhost:5000${user.profilePic}`} alt="Profile" style={avatarStyle} />
+              <img src={`${API_BASE_URL}${user.profilePic}`} alt="Profile" style={avatarStyle} />
             ) : (
               <div style={avatarPlaceholder}>{user?.fullName?.charAt(0).toUpperCase()}</div>
             )}

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import api from '../services/api';
+import { API_BASE_URL } from '../config';
 import { toast } from '../components/Toast';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { FiUser, FiMail, FiPhone, FiMapPin, FiCamera, FiLock, FiCalendar, FiBriefcase } from 'react-icons/fi';
@@ -28,7 +29,7 @@ const ProfileCommon = () => {
       setMobileNumber(user.mobileNumber || '');
       setAddress(user.address || '');
       if (user.profilePic) {
-        setProfilePicPreview(`http://localhost:5000${user.profilePic}`);
+        setProfilePicPreview(`${API_BASE_URL}${user.profilePic}`);
       }
     }
   }, [user]);

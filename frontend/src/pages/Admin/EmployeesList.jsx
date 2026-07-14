@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../../services/api';
+import { API_BASE_URL } from '../../config';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import { toast } from '../../components/Toast';
@@ -228,7 +229,7 @@ const EmployeesList = () => {
                       <div style={nameCell}>
                         {emp.profilePic ? (
                           <img 
-                            src={`http://localhost:5000${emp.profilePic}`} 
+                            src={`${API_BASE_URL}${emp.profilePic}`} 
                             alt="Avatar" 
                             style={avatarStyle} 
                           />
@@ -338,7 +339,7 @@ const EmployeesList = () => {
               <div style={detailHeader}>
                 {viewEmployee.profilePic ? (
                   <img 
-                    src={`http://localhost:5000${viewEmployee.profilePic}`} 
+                    src={`${API_BASE_URL}${viewEmployee.profilePic}`} 
                     alt="Profile" 
                     style={largeAvatar} 
                   />

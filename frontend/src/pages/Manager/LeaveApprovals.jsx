@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import { API_BASE_URL } from '../../config';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { toast } from '../../components/Toast';
 import { FiCalendar, FiFilter, FiCheck, FiX, FiInfo } from 'react-icons/fi';
@@ -115,7 +116,7 @@ const LeaveApprovals = () => {
                       <div style={nameCell}>
                         {leave.employee?.profilePic ? (
                           <img 
-                            src={`http://localhost:5000${leave.employee.profilePic}`} 
+                            src={`${API_BASE_URL}${leave.employee.profilePic}`} 
                             alt="Avatar" 
                             style={avatarStyle} 
                           />
@@ -219,7 +220,7 @@ const LeaveApprovals = () => {
               <div style={detailHeader}>
                 {selectedLeave.employee?.profilePic ? (
                   <img 
-                    src={`http://localhost:5000${selectedLeave.employee.profilePic}`} 
+                    src={`${API_BASE_URL}${selectedLeave.employee.profilePic}`} 
                     alt="Profile" 
                     style={largeAvatar} 
                   />

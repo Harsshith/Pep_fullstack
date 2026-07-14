@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import api from '../../services/api';
+import { API_BASE_URL } from '../../config';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { toast } from '../../components/Toast';
 import { FiArrowLeft, FiCamera, FiSave } from 'react-icons/fi';
@@ -58,7 +59,7 @@ const EmployeeForm = () => {
             setJoiningDate(emp.joiningDate.substring(0, 10)); // YYYY-MM-DD
           }
           if (emp.profilePic) {
-            setProfilePicPreview(`http://localhost:5000${emp.profilePic}`);
+            setProfilePicPreview(`${API_BASE_URL}${emp.profilePic}`);
           }
         }
       } catch (err) {

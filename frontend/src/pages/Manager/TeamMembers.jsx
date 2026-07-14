@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../../services/api';
+import { API_BASE_URL } from '../../config';
 import { AuthContext } from '../../context/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { toast } from '../../components/Toast';
@@ -58,7 +59,7 @@ const TeamMembers = () => {
               <div style={avatarSection}>
                 {member.profilePic ? (
                   <img 
-                    src={`http://localhost:5000${member.profilePic}`} 
+                    src={`${API_BASE_URL}${member.profilePic}`} 
                     alt="Avatar" 
                     style={avatarStyle} 
                   />

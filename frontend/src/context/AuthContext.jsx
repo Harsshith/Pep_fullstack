@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export const AuthContext = createContext();
 
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       try {
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         // Set API base URL correctly (e.g. backend running on localhost:5000)
-        const response = await axios.get('http://localhost:5000/api/auth/profile');
+        const response = await axios.get(`${API_BASE_URL}/api/auth/profile`);
         setUser(response.data);
       } catch (error) {
         console.error('Verify token failed:', error);
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         email,
         password
       });
